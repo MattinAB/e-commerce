@@ -22,8 +22,12 @@ export default async function Navigation() {
           </Link>
 
           <Link href="/">Home</Link>
-          <Link href="/products">Collections</Link>
-          <Link href="/new">New</Link>
+          {session && (
+            <>
+              <Link href="/dashboard/products">Collections</Link>
+              <Link href="/dashboard/new">New</Link>
+            </>
+          )}
         </div>
         <div className="flex login-box ">
           <span>Welcome back!</span>
@@ -32,9 +36,11 @@ export default async function Navigation() {
           ) : (
             <SignoutButton>Sign out</SignoutButton>
           )}
-          <Link href="/cart">
-            <CiShoppingCart size={20} />
-          </Link>
+          {session && (
+            <Link href="/dashboard/cart">
+              <CiShoppingCart size={20} />
+            </Link>
+          )}
         </div>
       </nav>
     </div>

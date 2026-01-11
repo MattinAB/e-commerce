@@ -2,7 +2,7 @@ import "./product.css";
 import ProductsContainer from "./productsCard";
 import SideBar from "./sideBar";
 import SearchBar from "./searchField";
-export default function ProductPage() {
+export default function Product() {
   return (
     <div className="product-body">
       <aside className="aside">

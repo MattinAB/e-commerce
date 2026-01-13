@@ -26,6 +26,7 @@ export default async function Navigation() {
             <>
               <Link href="/dashboard/products">Collections</Link>
               <Link href="/dashboard/new">New</Link>
+              <Link href="/dashboard/new-product">create-Product</Link>
             </>
           )}
         </div>

@@ -1,7 +1,7 @@
 import "./product.css";
-import ProductsContainer from "./productsCard";
-import SideBar from "./sideBar";
-import SearchBar from "./searchField";
+import ProductsContainer from "./_components/productsCard";
+import SideBar from "./_components/sideBar";
+import SearchBar from "./_components/searchField";
 export default function Product() {
   return (
     <div className="product-body">

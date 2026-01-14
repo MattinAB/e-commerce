@@ -1,5 +1,5 @@
 import { headers } from "next/headers";
-import SigninClient from "./SigninClient";
+import SigninClient from "./_components/SigninClient";
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 

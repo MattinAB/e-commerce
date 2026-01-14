@@ -390,9 +390,9 @@ export const ModelName = {
   Verification: 'Verification',
   Product: 'Product',
   Category: 'Category',
+  Genre: 'Genre',
   Order: 'Order',
-  OrderItem: 'OrderItem',
-  Genre: 'Genre'
+  OrderItem: 'OrderItem'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -408,7 +408,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "session" | "account" | "verification" | "product" | "category" | "order" | "orderItem" | "genre"
+    modelProps: "user" | "session" | "account" | "verification" | "product" | "category" | "genre" | "order" | "orderItem"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -856,6 +856,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Genre: {
+      payload: Prisma.$GenrePayload<ExtArgs>
+      fields: Prisma.GenreFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.GenreFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.GenreFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        findFirst: {
+          args: Prisma.GenreFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.GenreFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        findMany: {
+          args: Prisma.GenreFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
+        }
+        create: {
+          args: Prisma.GenreCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        createMany: {
+          args: Prisma.GenreCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.GenreCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
+        }
+        delete: {
+          args: Prisma.GenreDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        update: {
+          args: Prisma.GenreUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        deleteMany: {
+          args: Prisma.GenreDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.GenreUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.GenreUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
+        }
+        upsert: {
+          args: Prisma.GenreUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
+        }
+        aggregate: {
+          args: Prisma.GenreAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateGenre>
+        }
+        groupBy: {
+          args: Prisma.GenreGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GenreGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.GenreCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.GenreCountAggregateOutputType> | number
+        }
+      }
+    }
     Order: {
       payload: Prisma.$OrderPayload<ExtArgs>
       fields: Prisma.OrderFieldRefs
@@ -1004,80 +1078,6 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Genre: {
-      payload: Prisma.$GenrePayload<ExtArgs>
-      fields: Prisma.GenreFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.GenreFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.GenreFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        findFirst: {
-          args: Prisma.GenreFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.GenreFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        findMany: {
-          args: Prisma.GenreFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
-        }
-        create: {
-          args: Prisma.GenreCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        createMany: {
-          args: Prisma.GenreCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        createManyAndReturn: {
-          args: Prisma.GenreCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
-        }
-        delete: {
-          args: Prisma.GenreDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        update: {
-          args: Prisma.GenreUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        deleteMany: {
-          args: Prisma.GenreDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.GenreUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateManyAndReturn: {
-          args: Prisma.GenreUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>[]
-        }
-        upsert: {
-          args: Prisma.GenreUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$GenrePayload>
-        }
-        aggregate: {
-          args: Prisma.GenreAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateGenre>
-        }
-        groupBy: {
-          args: Prisma.GenreGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.GenreGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.GenreCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.GenreCountAggregateOutputType> | number
-        }
-      }
-    }
   }
 } & {
   other: {
@@ -1206,6 +1206,18 @@ export const CategoryScalarFieldEnum = {
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
 
 
+export const GenreScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type GenreScalarFieldEnum = (typeof GenreScalarFieldEnum)[keyof typeof GenreScalarFieldEnum]
+
+
 export const OrderScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -1228,18 +1240,6 @@ export const OrderItemScalarFieldEnum = {
 } as const
 
 export type OrderItemScalarFieldEnum = (typeof OrderItemScalarFieldEnum)[keyof typeof OrderItemScalarFieldEnum]
-
-
-export const GenreScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  slug: 'slug',
-  categoryId: 'categoryId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type GenreScalarFieldEnum = (typeof GenreScalarFieldEnum)[keyof typeof GenreScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1477,9 +1477,9 @@ export type GlobalOmitConfig = {
   verification?: Prisma.VerificationOmit
   product?: Prisma.ProductOmit
   category?: Prisma.CategoryOmit
+  genre?: Prisma.GenreOmit
   order?: Prisma.OrderOmit
   orderItem?: Prisma.OrderItemOmit
-  genre?: Prisma.GenreOmit
 }
 
 /* Types for Logging */

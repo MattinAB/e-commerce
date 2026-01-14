@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createProduct } from "./product-api";
+import { createProduct } from "@/lib/product/product-api/product-api";
 import type { Product } from "@/utils/types";
 
 export async function POST(request: Request) {

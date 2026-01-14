@@ -5,12 +5,14 @@ interface AuthState {
   email: string;
   loading: boolean;
   error: string;
+  role: string | null;
 }
 const initialState: AuthState = {
   name: "",
   email: "",
   loading: true,
   error: "",
+  role: null,
 };
 
 const authSlice = createSlice({
@@ -30,8 +32,12 @@ const authSlice = createSlice({
     setError(state, action: PayloadAction<string>) {
       state.error = action.payload;
     },
+    setRole(state, action: PayloadAction<string | null>) {
+      state.role = action.payload;
+    },
   },
 });
 
-export const { setName, setLoading, setError, setEmail } = authSlice.actions;
+export const { setName, setLoading, setError, setEmail, setRole } =
+  authSlice.actions;
 export default authSlice.reducer;

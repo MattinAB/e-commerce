@@ -70,6 +70,11 @@ export type Product = Prisma.ProductModel
  */
 export type Category = Prisma.CategoryModel
 /**
+ * Model Genre
+ * 
+ */
+export type Genre = Prisma.GenreModel
+/**
  * Model Order
  * 
  */
@@ -79,8 +84,3 @@ export type Order = Prisma.OrderModel
  * 
  */
 export type OrderItem = Prisma.OrderItemModel
-/**
- * Model Genre
- * 
- */
-export type Genre = Prisma.GenreModel

@@ -17,7 +17,7 @@ vi.mock("@/lib/sentry", () => ({
   captureMessage: vi.fn(),
 }));
 
-import { createProduct as createProductFn } from "../app/api/product/product-api";
+import { createProduct as createProductFn } from "../lib/product/product-api/product-api";
 import { prisma } from "../lib/prisma";
 import { Prisma } from "../lib/prisma/generated/prisma/client";
 

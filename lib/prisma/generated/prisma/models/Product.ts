@@ -588,20 +588,6 @@ export type ProductUncheckedUpdateManyWithoutCategoriesNestedInput = {
   deleteMany?: Prisma.ProductScalarWhereInput | Prisma.ProductScalarWhereInput[]
 }
 
-export type ProductCreateNestedOneWithoutOrderItemsInput = {
-  create?: Prisma.XOR<Prisma.ProductCreateWithoutOrderItemsInput, Prisma.ProductUncheckedCreateWithoutOrderItemsInput>
-  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutOrderItemsInput
-  connect?: Prisma.ProductWhereUniqueInput
-}
-
-export type ProductUpdateOneRequiredWithoutOrderItemsNestedInput = {
-  create?: Prisma.XOR<Prisma.ProductCreateWithoutOrderItemsInput, Prisma.ProductUncheckedCreateWithoutOrderItemsInput>
-  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutOrderItemsInput
-  upsert?: Prisma.ProductUpsertWithoutOrderItemsInput
-  connect?: Prisma.ProductWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutOrderItemsInput, Prisma.ProductUpdateWithoutOrderItemsInput>, Prisma.ProductUncheckedUpdateWithoutOrderItemsInput>
-}
-
 export type ProductCreateNestedManyWithoutGenresInput = {
   create?: Prisma.XOR<Prisma.ProductCreateWithoutGenresInput, Prisma.ProductUncheckedCreateWithoutGenresInput> | Prisma.ProductCreateWithoutGenresInput[] | Prisma.ProductUncheckedCreateWithoutGenresInput[]
   connectOrCreate?: Prisma.ProductCreateOrConnectWithoutGenresInput | Prisma.ProductCreateOrConnectWithoutGenresInput[]
@@ -638,6 +624,20 @@ export type ProductUncheckedUpdateManyWithoutGenresNestedInput = {
   update?: Prisma.ProductUpdateWithWhereUniqueWithoutGenresInput | Prisma.ProductUpdateWithWhereUniqueWithoutGenresInput[]
   updateMany?: Prisma.ProductUpdateManyWithWhereWithoutGenresInput | Prisma.ProductUpdateManyWithWhereWithoutGenresInput[]
   deleteMany?: Prisma.ProductScalarWhereInput | Prisma.ProductScalarWhereInput[]
+}
+
+export type ProductCreateNestedOneWithoutOrderItemsInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutOrderItemsInput, Prisma.ProductUncheckedCreateWithoutOrderItemsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutOrderItemsInput
+  connect?: Prisma.ProductWhereUniqueInput
+}
+
+export type ProductUpdateOneRequiredWithoutOrderItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.ProductCreateWithoutOrderItemsInput, Prisma.ProductUncheckedCreateWithoutOrderItemsInput>
+  connectOrCreate?: Prisma.ProductCreateOrConnectWithoutOrderItemsInput
+  upsert?: Prisma.ProductUpsertWithoutOrderItemsInput
+  connect?: Prisma.ProductWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ProductUpdateToOneWithWhereWithoutOrderItemsInput, Prisma.ProductUpdateWithoutOrderItemsInput>, Prisma.ProductUncheckedUpdateWithoutOrderItemsInput>
 }
 
 export type ProductCreateWithoutCategoriesInput = {
@@ -708,6 +708,59 @@ export type ProductScalarWhereInput = {
   isActive?: Prisma.BoolFilter<"Product"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Product"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Product"> | Date | string
+}
+
+export type ProductCreateWithoutGenresInput = {
+  id?: string
+  name: string
+  slug: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  stock?: number
+  images?: Prisma.ProductCreateimagesInput | string[]
+  sku?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  categories?: Prisma.CategoryCreateNestedManyWithoutProductsInput
+  orderItems?: Prisma.OrderItemCreateNestedManyWithoutProductInput
+}
+
+export type ProductUncheckedCreateWithoutGenresInput = {
+  id?: string
+  name: string
+  slug: string
+  description: string
+  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  stock?: number
+  images?: Prisma.ProductCreateimagesInput | string[]
+  sku?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutProductsInput
+  orderItems?: Prisma.OrderItemUncheckedCreateNestedManyWithoutProductInput
+}
+
+export type ProductCreateOrConnectWithoutGenresInput = {
+  where: Prisma.ProductWhereUniqueInput
+  create: Prisma.XOR<Prisma.ProductCreateWithoutGenresInput, Prisma.ProductUncheckedCreateWithoutGenresInput>
+}
+
+export type ProductUpsertWithWhereUniqueWithoutGenresInput = {
+  where: Prisma.ProductWhereUniqueInput
+  update: Prisma.XOR<Prisma.ProductUpdateWithoutGenresInput, Prisma.ProductUncheckedUpdateWithoutGenresInput>
+  create: Prisma.XOR<Prisma.ProductCreateWithoutGenresInput, Prisma.ProductUncheckedCreateWithoutGenresInput>
+}
+
+export type ProductUpdateWithWhereUniqueWithoutGenresInput = {
+  where: Prisma.ProductWhereUniqueInput
+  data: Prisma.XOR<Prisma.ProductUpdateWithoutGenresInput, Prisma.ProductUncheckedUpdateWithoutGenresInput>
+}
+
+export type ProductUpdateManyWithWhereWithoutGenresInput = {
+  where: Prisma.ProductScalarWhereInput
+  data: Prisma.XOR<Prisma.ProductUpdateManyMutationInput, Prisma.ProductUncheckedUpdateManyWithoutGenresInput>
 }
 
 export type ProductCreateWithoutOrderItemsInput = {
@@ -788,59 +841,6 @@ export type ProductUncheckedUpdateWithoutOrderItemsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   categories?: Prisma.CategoryUncheckedUpdateManyWithoutProductsNestedInput
   genres?: Prisma.GenreUncheckedUpdateManyWithoutProductsNestedInput
-}
-
-export type ProductCreateWithoutGenresInput = {
-  id?: string
-  name: string
-  slug: string
-  description: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
-  stock?: number
-  images?: Prisma.ProductCreateimagesInput | string[]
-  sku?: string | null
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  categories?: Prisma.CategoryCreateNestedManyWithoutProductsInput
-  orderItems?: Prisma.OrderItemCreateNestedManyWithoutProductInput
-}
-
-export type ProductUncheckedCreateWithoutGenresInput = {
-  id?: string
-  name: string
-  slug: string
-  description: string
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
-  stock?: number
-  images?: Prisma.ProductCreateimagesInput | string[]
-  sku?: string | null
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  categories?: Prisma.CategoryUncheckedCreateNestedManyWithoutProductsInput
-  orderItems?: Prisma.OrderItemUncheckedCreateNestedManyWithoutProductInput
-}
-
-export type ProductCreateOrConnectWithoutGenresInput = {
-  where: Prisma.ProductWhereUniqueInput
-  create: Prisma.XOR<Prisma.ProductCreateWithoutGenresInput, Prisma.ProductUncheckedCreateWithoutGenresInput>
-}
-
-export type ProductUpsertWithWhereUniqueWithoutGenresInput = {
-  where: Prisma.ProductWhereUniqueInput
-  update: Prisma.XOR<Prisma.ProductUpdateWithoutGenresInput, Prisma.ProductUncheckedUpdateWithoutGenresInput>
-  create: Prisma.XOR<Prisma.ProductCreateWithoutGenresInput, Prisma.ProductUncheckedCreateWithoutGenresInput>
-}
-
-export type ProductUpdateWithWhereUniqueWithoutGenresInput = {
-  where: Prisma.ProductWhereUniqueInput
-  data: Prisma.XOR<Prisma.ProductUpdateWithoutGenresInput, Prisma.ProductUncheckedUpdateWithoutGenresInput>
-}
-
-export type ProductUpdateManyWithWhereWithoutGenresInput = {
-  where: Prisma.ProductScalarWhereInput
-  data: Prisma.XOR<Prisma.ProductUpdateManyMutationInput, Prisma.ProductUncheckedUpdateManyWithoutGenresInput>
 }
 
 export type ProductUpdateWithoutCategoriesInput = {

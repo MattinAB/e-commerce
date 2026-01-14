@@ -1,6 +1,8 @@
 "use server";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import { Role } from "../prisma/generated/prisma/enums";
+import { prisma } from "../prisma";
 
 const signIn = async (email: string, password: string) => {
   return await auth.api.signInEmail({
@@ -26,4 +28,16 @@ const signOut = async () => {
   });
 };
 
-export { signIn, signUp, signOut };
+async function getUserRoleById(userId: string): Promise<Role | null> {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      role: true,
+    },
+  });
+  return user ? user.role : null;
+}
+
+export { signIn, signUp, signOut, getUserRoleById };

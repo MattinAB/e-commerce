@@ -2,7 +2,7 @@
 
 import { prisma } from "@/lib/prisma";
 import { Prisma } from "@/lib/prisma/generated/prisma/client";
-import { productCreateSchema, type ProductCreateSchema } from "@/utils/schemas";
+import { productCreateSchema } from "@/utils/schemas";
 
 export async function createProduct(input: unknown) {
   // Validate input with Zod

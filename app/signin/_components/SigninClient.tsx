@@ -4,12 +4,11 @@ import {
   setEmail,
   setError,
   setName,
-  setRole,
 } from "@/redux/features/auth/authentication-slice";
 import { useRouter } from "next/navigation";
 
 import { useAppDispatch, useAppSelector } from "@/redux/store/hooks";
-import { getUserRoleById, signIn, signUp } from "@/lib/actions/auth-client";
+import { signIn, signUp } from "@/lib/actions/auth-client";
 
 export default function SigninClient() {
   const { name, email, error } = useAppSelector((state) => state.auth);
@@ -26,12 +25,10 @@ export default function SigninClient() {
 
     if (isRegistering) {
       try {
-        const { token, user } = await signUp(email, password as string, name);
+        const { token } = await signUp(email, password as string, name);
         if (token) {
-          const role = await getUserRoleById(user?.id);
-          disppatch(setRole(role));
+          route.push("/");
         }
-        route.push("/");
       } catch (error) {
         if (error instanceof Error) {
           disppatch(setError(error.message));
@@ -41,11 +38,8 @@ export default function SigninClient() {
       }
     } else {
       try {
-        const { token, user } = await signIn(email, password as string);
+        const { token } = await signIn(email, password as string);
         if (token) {
-          const role = await getUserRoleById(user?.id);
-          console.log("role after signin", role);
-          disppatch(setRole(role));
           route.push("/");
         }
       } catch (error) {

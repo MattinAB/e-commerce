@@ -3,7 +3,7 @@
   --border-radius: 0.8rem 0.8rem 0 0;
   --box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   --box-margin: 1rem auto;
-  --nav-height: calc(10vh + 50px);
+  --nav-height: calc(5vh + 50px);
 }
 .product-body {
   display: grid;
@@ -55,11 +55,12 @@
   grid-auto-rows: 300px;
   gap: 1rem;
 }
-@media (min-width: 320px) and (max-width: 800px) {
+@media (min-width: 320px) and (max-width: 765px) {
   .products {
     grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
   }
   .product-body {
+    top: calc(15vh + 50px);
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:

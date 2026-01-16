@@ -9,11 +9,11 @@ import { getUserRoleById } from "@/lib/actions/auth-client";
 
 export default async function Navigation() {
   const session = await auth.api.getSession({ headers: await headers() });
-  const userName = session?.user?.name || "Guest";
   const role = await getUserRoleById(session?.user?.id || "");
+  const userName = session?.user?.name || "Guest";
 
   return (
-    <div className="flex flex-col fixed top-4 rounded-2xl box-border bg-blue-700 text-neutral-100 inset-0 h-max p-1.5 w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col sticky top-1.5 rounded-2xl box-border bg-blue-700 text-neutral-100  h-max p-1.5 w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
       <span>
         <Link href="/">Commerce name !</Link>
       </span>
@@ -37,10 +37,10 @@ export default async function Navigation() {
         </div>
         <div className="flex login-box ">
           <span>Welcome back! {` ${userName}`}</span>
-          {session === null ? (
+          {!session ? (
             <Link href="/signin">Signin </Link>
           ) : (
-            <SignoutButton className="p-1 rounded-2xl shadow-2xl">
+            <SignoutButton className="p-1 rounded-2xl shadow-2xl hover:bg-slate-100 hover:text-black hover:scale-105 transition-all duration-300 ease-in-out">
               Sign out
             </SignoutButton>
           )}

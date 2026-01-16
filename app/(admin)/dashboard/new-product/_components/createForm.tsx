@@ -1,12 +1,15 @@
 "use client";
+
 import { createProduct } from "@/lib/product/product-api/product-api";
 import { productCreateSchema } from "@/utils/schemas";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import SuccessAlert from "./successAlert";
 
 export default function CreateForm() {
   const formRef = useRef<HTMLFormElement>(null);
   const [formErrors, setFormErrors] = useState<string[] | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -67,14 +70,17 @@ export default function CreateForm() {
             (issue) => `${issue.path.join(".")}: ${issue.message}`,
           ),
         );
-        setIsSubmitting(false);
         return;
       }
 
       const res = await createProduct(validationResult.data);
-      alert(`Product created successfully ${res?.name}`);
-      // Reset form on success
-      formRef.current?.reset();
+      if (res.id) {
+        setTimeout(() => {
+          setIsSuccess(false);
+        }, 5000);
+        formRef.current?.reset();
+        setIsSuccess(true);
+      }
     } catch (error) {
       const errorMessage =
         error instanceof Error ? error.message : "Failed to create product";
@@ -86,6 +92,7 @@ export default function CreateForm() {
   }
   return (
     <div className="flex flex-col items-center min-h-screen pt-[10vh]">
+      {isSuccess && <SuccessAlert title="Product created successfully." />}
       <h1 className="font-sans font-bold text-2xl text-gray-800">
         Create Product
       </h1>

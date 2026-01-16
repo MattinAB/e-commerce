@@ -8,7 +8,9 @@ export default async function CreateProduct() {
   const session = await auth.api.getSession({ headers: await headers() });
   const role = await getUserRoleById(session?.user?.id || "");
 
-  if (role !== "ADMIN") return redirect("/");
+  if (role !== "ADMIN") {
+    redirect("/");
+  }
 
   return <CreateForm />;
 }

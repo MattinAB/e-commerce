@@ -13,7 +13,7 @@ export default async function Navigation() {
   const userName = session?.user?.name || "Guest";
 
   return (
-    <div className="flex flex-col sticky top-1.5 rounded-2xl box-border bg-blue-700 text-neutral-100  h-max p-1.5 w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex flex-col z-20 sticky top-2.5 content-center rounded-2xl box-border bg-blue-700 text-neutral-100  h-max p-1.5 w-4/5 mx-auto px-4 sm:px-6 lg:px-8">
       <span>
         <Link href="/">Commerce name !</Link>
       </span>

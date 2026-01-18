@@ -1,18 +1,25 @@
+"use client";
+
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface Props {
   name: string;
   price: number;
-  images: string[];
+  images?: string[];
+  id: string;
 }
 
 export function ProductCard(product: Props) {
-  const { name, price, images } = product;
-
+  const { name, price, images, id } = product;
+  const router = useRouter();
   return (
-    <Card className=" pt-0 overflow-hidden ">
+    <Card
+      onClick={() => router.push(`/dashboard/products/${id}`)}
+      className=" pt-0 overflow-hidden "
+    >
       <CardContent className="flex relative  h-11/12   ">
         <Image
           fill

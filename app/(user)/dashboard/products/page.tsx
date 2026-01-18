@@ -8,7 +8,7 @@ import { prisma } from "@/lib/prisma";
 async function getProduct() {
   try {
     const result = await prisma.product.findMany();
-    return [...result];
+    return result;
   } catch (error) {
     console.log("Error to get products", error);
   }
@@ -16,7 +16,7 @@ async function getProduct() {
 
 export default async function Product() {
   const products = await getProduct();
-  console.log("products from prisma", products);
+
   return (
     <div className="product-body">
       <aside className="aside">
@@ -28,6 +28,7 @@ export default async function Product() {
           {products?.map((product) => {
             return (
               <ProductCard
+                id={product.id}
                 images={product.images}
                 name={product.name}
                 price={Number(product.price)}
